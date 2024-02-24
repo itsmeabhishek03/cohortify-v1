@@ -1,0 +1,16 @@
+.loginBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+input{
+    margin-top: 10px;
+    height: 30px;
+    width: 400px;
+}
+button{
+    margin-top: 20px;
+    margin-right: 10px;
+    height: 30px;
+    width: 400px;
+}

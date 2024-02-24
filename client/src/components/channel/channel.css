@@ -1,0 +1,64 @@
+.channel{
+    flex: 5;
+    padding: 0.5rem 1rem;
+    border-right: 2px solid gray;
+    height: calc(100vh - 75px);
+    position: sticky;
+    overflow-y: scroll;
+    top: 65px;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: purple;
+  }
+  .channelTopWrapper{
+    display: flex;
+    align-items: center !important;
+    
+  }
+  .channelTopWrapper button{
+    background-color: #6979f4;
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+   margin-bottom: 1rem;
+   margin-right: 1.2rem;
+  }
+.channel-top{
+    display: block;
+    margin: auto;
+    border: 2px solid purple;
+    padding: 0 6px;
+    border-radius: 55px;
+
+    padding-bottom: 3px;
+    width: 70%;
+    position: relative;
+}
+
+
+.channel-top input{
+    width: 45%;
+    margin-left: 10px;
+}
+.channel-top input:focus{
+    outline: none;
+
+  
+}
+.ChannelSearchIcon{
+    position: absolute;
+    /* background-color: gray; */
+    font-size: 35px !important;
+    top: 8px;
+    right: 2px;
+    cursor: pointer;
+}

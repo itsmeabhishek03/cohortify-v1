@@ -1,0 +1,84 @@
+.chat{
+    margin: 2rem 0;
+    /* border-top: 2px solid gray; */
+}
+.chat-top{
+    padding: 1rem;
+
+}
+.chat-top h1{
+    font-size: 20px;
+    font-weight: 500;
+
+}
+.chat-content{
+    margin: 0.5rem 0;
+}
+.youtubeThumbNail{
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+}
+.br{
+    margin: auto;
+    width: 100% !important;
+    height: 2px;
+    margin: 2rem;
+    background-color: #000;
+    margin-left: -5px;
+}
+.chatBox{
+    flex: 6.5;
+   
+}
+.chatBoxWrapper{
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+ 
+}
+.chatBoxTop{
+    height: calc(100vh - 225px);
+    overflow-y:scroll;
+    padding-right: 10px;
+}  
+
+.chatOnline{
+    flex: 3;
+}
+.chatOnlineWrapper{
+    padding: 10px;
+    height: 100%;
+}
+.chatBoxBottom {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+.chatMessageInput {
+    width: 80%;
+    height: 90px;
+    padding: 10px;
+}
+
+.chatSubmitButton {
+    width: 70px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+}
+
+.noChatText{
+    position: absolute;
+    top: 100px;
+    font-weight: 500;
+    opacity: 0.3;
+    cursor: default;
+    font-size: 50px;
+}

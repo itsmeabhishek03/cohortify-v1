@@ -1,0 +1,28 @@
+.tut{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+.tut-heading{
+    font-weight: bolder;
+    font-size: 69px;
+    line-height: 75px;
+    letter-spacing: -0.06em;
+    word-spacing: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
+.tut-video{
+    width: 90%;
+    height: 85vh;
+}
+.tut-video iframe{
+    border-radius: 20px;
+    box-shadow: 10px 20px 20px 30px rgb(7, 5, 47);
+}

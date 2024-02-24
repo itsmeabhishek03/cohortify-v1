@@ -1,0 +1,63 @@
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+.topbar-left{
+    display: flex;
+    align-items: center;
+}
+.topbar-left p{
+    font-size: 15px;
+    font-weight: 500;
+      align-items: center;
+  }
+.topbar-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.topbarImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    margin-left: 2rem;
+}
+.topbarCenter {
+    flex: 5;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    border-radius: 24px;
+    height: 40px;
+    justify-content: center;
+    position: relative;
+    border: 2px solid black;
+    border-bottom: 2px solid black !important;
+    padding: 0 15px;
+   padding-bottom: 6px;
+  }
+  .topbarSearchIcon {
+    position: absolute !important;
+    font-size: 25px !important;
+    margin-left: 5px;
+    cursor: pointer;
+    top: 8px;
+    right: 2px;
+  }
+  .topbarInput {
+    border: none;
+    width: 200px;
+    height: 22px;
+    
+  }
+  .topbarInput:focus {
+    outline: none;
+  }
+  .themebutton{
+    margin-left: 1rem;
+  }
