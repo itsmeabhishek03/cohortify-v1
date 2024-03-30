@@ -1,5 +1,6 @@
 .channel{
     flex: 5;
+    position: relative;
     padding: 0.5rem 1rem;
     border-right: 2px solid gray;
     height: calc(100vh - 75px);
@@ -61,4 +62,59 @@
     top: 8px;
     right: 2px;
     cursor: pointer;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 111, 111, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+
+.modal-content {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* border: 2px solid red; */
+  width: 45%;   
+   height: 70%;  
+  overflow-y: auto; /* Enable scrolling if content exceeds modal height */
+}
+.modal-main{
+  display: flex;
+  flex-direction: column;
+}
+.modal-input{
+  margin: 10px 0;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #6979f4; /* Set border color */
+  border-radius: 5px;
+  height: 50px !important;
+  outline: none; /* Remove default outline */
+  
+}
+.modal-input input{
+ 
+}
+.button{
+  width: 150px;
+  background-color:  #b169f4;;
+  color: white;
+  border-radius: 2px;
+  height: 40px;
+  
+}
+.modal-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

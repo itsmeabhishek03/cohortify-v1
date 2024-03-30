@@ -57,13 +57,27 @@ router.post("/:channelId/addUser/:userId", async (req, res) => {
 });
 
 // Create a new channel
-router.post("/create", async (req, res) => {
+router.post("/create/:userId", async (req, res) => {
     try {
-        const { link, name, description, isPrivate, userId } = req.body;
+        // Extract userId from the URL parameters
+        const userId = req.params.userId;
+
+        // Extract other data from the request body
+        const { link, name, description, isPrivate } = req.body;
+
+        // Find the user by userId
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
+            // Check if a channel with the same name already exists
+        const existingChannel = await Channel.findOne({ name });
+
+        if (existingChannel) {
+        return res.status(400).json({ message: 'Channel name already exists' });
+        }
+
+        // Create a new channel based on whether it's private or not
         let newChannel;
         if (isPrivate) {
             newChannel = new Channel({
@@ -83,7 +97,11 @@ router.post("/create", async (req, res) => {
                 members: [userId] 
             });
         }
+
+        // Save the new channel to the database
         const savedChannel = await newChannel.save();
+
+        // Respond with the saved channel
         res.status(201).json({ message: "Channel created successfully", channel: savedChannel });
     } catch (error) {
         console.error(error);
@@ -118,3 +136,5 @@ router.put("/:channelId/removeUser/:userId", async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 });
+
+module.exports = router;

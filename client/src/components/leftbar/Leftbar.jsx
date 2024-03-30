@@ -1,39 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Chat } from '@mui/icons-material';
 import './leftbar.css';
+import { AuthContext } from '../../context/AuthContext';
+import List from "../list/List";
+import { useContext, useState } from 'react';
+import axios from 'axios';
 
 const Leftbar = () => {
+  const {user, setCurrentChat, currentChat} = useContext(AuthContext);
+  const [userChannel, setUserChannel] = useState([]);
+
+  useEffect(()=>{
+    const getChannel = async () =>{
+      const res = await axios.get(`http://localhost:5555/api/channel/user/${user._id}`);
+      console.log(res.data);
+      setUserChannel(res.data);
+    }
+    getChannel();
+  }, [currentChat]);
+
   return (
     <div className="leftbar" >
     <div className="leftbarWrapper">
        <ul className="leftbarList">
-        
-        <li className="leftbarListItem">
-          <Chat className='leftbarListItemIcon' color="secondary"/>
-          <span className="leftbarListItemText" >Channel #1</span>
-        </li>
-        <li className="leftbarListItem">
-          <Chat className='leftbarListItemIcon' color="secondary"/>
-          <span className="leftbarListItemText" >Channel #2</span>
-        </li>
-        <li className="leftbarListItem">
-          <Chat className='leftbarListItemIcon' color="secondary" />
-          <span className="leftbarListItemText" >Channel #3</span>
-        </li>
-        <li className="leftbarListItem">
-          <Chat className='leftbarListItemIcon' color="secondary" />
-          <span className="leftbarListItemText" >Channel #4</span>
-        </li>
-              
+
+        {userChannel.slice().reverse().map((u)=>(
+          <>
+          <List key={u._id} channel={u} />
+          <hr className="sidebarHr" />
+          </>
+        ))}
+
         
        </ul>
        
-        <hr className="sidebarHr" />
-        {/* <ul className="sidebarFriendList">
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
-        </ul> */}
+       
+       
     </div>
   </div>
   )

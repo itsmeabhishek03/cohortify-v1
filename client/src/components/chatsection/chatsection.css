@@ -1,9 +1,9 @@
 .chat{
-    margin: 2rem 0;
+    margin: 1rem 0;
     /* border-top: 2px solid gray; */
 }
 .chat-top{
-    padding: 1rem;
+    padding: 0rem 1rem;
 
 }
 .chat-top h1{

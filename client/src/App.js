@@ -6,22 +6,25 @@ import {
   Navigate
 
 } from "react-router-dom";
+import { useContext } from 'react';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Work from './pages/work/Work';
+import { AuthContext } from './context/AuthContext';
 
 const App = () => {
+  const {user:currentUser} = useContext(AuthContext);
   return (
     <>
     <Router>
 
      <Routes>
 
-      <Route path="/" element={ <Home/>} />
-      <Route path="/signup" element={ <Signup/>} />
-      <Route path="/login" element={ <Login/>} />
-      <Route path="/work" element={<Work/>} />
+      <Route path="/" element={currentUser ? <Navigate to="/work"/> : <Home/>} />
+      <Route path="/signup" element={currentUser ?  <Navigate to="/work"/> :   <Signup/>} />
+      <Route path="/login" element={currentUser ?  <Navigate to="/work"/> :   <Login/>} />
+      <Route path="/work" element={!currentUser ? <Signup/> : <Work/>} />
     
      </Routes>
 

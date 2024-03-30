@@ -36,8 +36,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       max: 50,
     },
-    createdAt: { type: Date, default: Date.now }
+   
   },
+  {timestamps: true}
   
 );
 

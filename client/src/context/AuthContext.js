@@ -12,6 +12,7 @@ export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({children}) =>{
     const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
+    const [currentChat, setCurrentChat] = useState(null);
 
     useEffect(()=>{
         localStorage.setItem("user", JSON.stringify(state.user))
@@ -24,7 +25,8 @@ export const AuthContextProvider = ({children}) =>{
             isFetching: state.isFetching,
             errror: state.errror,
             dispatch,
-         
+            currentChat: currentChat,
+            setCurrentChat: setCurrentChat
         }}
         >
            {children}

@@ -2,14 +2,20 @@ const router = require("express").Router();
 const Channel = require("../models/Channel");
 const Message = require("../models/Message");
 
-// Get messages from a channel
-router.get("/:channelId/messages", async (req, res) => {
+// Get messages from a channel for a specific user
+router.get("/:channelId/messages/:userId", async (req, res) => {
     try {
-        const { channelId } = req.params;
+        const { channelId, userId } = req.params;
         const channel = await Channel.findById(channelId);
         if (!channel) {
             return res.status(404).json({ message: "Channel not found" });
         }
+
+        // Check if the user is a member of the channel
+        if (!channel.members.includes(userId)) {
+            return res.status(403).json({ message: "You are not authorized to access messages from this channel" });
+        }
+
         const messages = await Message.find({ channelId });
         res.status(200).json(messages);
     } catch (error) {
@@ -18,19 +24,24 @@ router.get("/:channelId/messages", async (req, res) => {
     }
 });
 
+
 // post messages to a channel
-router.post("/:channelId/messages", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
-        const { channelId } = req.params;
-        const { userId, content } = req.body;
-        const channel = await Channel.findById(channelId);
-        if (!channel) {
+      
+        const { content, sender, channel } = req.body;
+        const getChannel = await Channel.findById(channel);
+        if (!getChannel) {
             return res.status(404).json({ message: "Channel not found" });
         }
+                // Check if the user is a member of the channel
+        if (!getChannel.members.includes(sender)) {
+            return res.status(403).json({ message: "You are not authorized to access messages from this channel" });
+        }
         const newMessage = new Message({
-            channelId,
-            userId,
-            content
+            content,
+            sender,
+            channel
         });
         const savedMessage = await newMessage.save();
         res.status(201).json({ message: "Message sent successfully", message: savedMessage });
